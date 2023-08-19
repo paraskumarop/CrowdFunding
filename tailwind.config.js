@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:
+      {
+        'arrow': "url('./src/assets/splash.svg')",
+        'blur': "url('./src/assets/blursbg.svg')"
+      }
+    },
   },
   plugins: [],
 }

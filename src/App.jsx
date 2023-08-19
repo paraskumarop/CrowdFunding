@@ -1,21 +1,37 @@
-import { useState } from 'react'
-import Navbar from './Components/Navbar'
-import './App.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Footer from './Components/Footer'
-import MainContent from './Components/MainContent'
-function App() {
 
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './App.css'
+import Home from './Components/Home'
+import ErrorPage from './Components/Home'
+import Participate from './Components/Participate'
+import NavbarWrapper from './Components/NavbarWrapper'
+import About from './Components/About'
+
+
+function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <NavbarWrapper />,
+      errorElement: <ErrorPage />,
+      children :[{
+          path: "/",
+          element: <Home />,
+
+      },
+      {
+        path: "/about",
+        element: <About/>,
+      }
+    ]
+    },
+  ])
 
   return (
-    <div className='main-app flex-col min-h-screen s' >
-      <div className="flex-1">
-      <Navbar />
-      <MainContent />
-      </div>
-        <Footer />
-    </div>
+    <>
+            <RouterProvider router={router} />
+    </>
   )
 }
 
-export default App
+export default App;
